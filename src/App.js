@@ -58,7 +58,7 @@ console.log("weather error", errorNow);
         setErrorWhileGettingWeather("Could not get current weather");
       }); };
 
-  // FOR loading currency list once at beginning
+  // FOR loading currency list 
 useEffect(() => {
 fetch(BASE_URL)
  .then((res) => res.json())
@@ -72,17 +72,17 @@ fetch(BASE_URL)
 });
   }, []);
 
-  // when user changes the toCurrency
+  
   useEffect(() => {
 if (selectedCurrencyTo != null && selectedCurrencyTo !== "") {
   fetch(BASE_URL)
-    .then((response) => response.json())
+ .then((response) => response.json())
     .then((dataAgain) => {
 setConversionRate(dataAgain.conversion_rates[selectedCurrencyTo]);
         }); }
   }, [selectedCurrencyTo]);
 
-  // if user changes the input number
+  /
   function whenUserTypesNewAmount(e) {
     setUserTypedAmount(e.target.value);
   }
@@ -90,25 +90,25 @@ setConversionRate(dataAgain.conversion_rates[selectedCurrencyTo]);
   return (
     <div className="app-container bg-sky-50 min-h-screen ">
 
-      <h1 text-center mb-4 text-4xl font-bold font-sans >Travel-dashboard</h1>
+  <h1 text-center mb-4 text-4xl font-bold font-sans >Travel-dashboard</h1>
 
       <Search onSearchChange={handleUserSelectedCityFromSearch} />
 
-      {errorWhileGettingWeather !== null && (
+  {errorWhileGettingWeather !== null && (
         <div className="error-box">{errorWhileGettingWeather}</div>
       )}
 
-      {/* Show Current Weather if available */}
+      {}
       {weatherDataNow ? <CurrentWeather data={weatherDataNow} /> : null}
 
-      {/* Optional: forecast (commented out) */}
-      {/* {forecastData && <Forecast data={forecastData} />} */}
+      {}
+      {}
 
-      <div className="currency-section border-2 border-gray-300 p-6 rounded-lg shadow-md bg-white max-w-md mx-auto mt-6">
+    <div className="currency-section border-2 border-gray-300 p-6 rounded-lg shadow-md bg-white max-w-md mx-auto mt-6">
 
         <h2 className="mt-5 text-2xl font-semibold font-sans">Currency Converter</h2>
         
-        <CurrencyRow
+ <CurrencyRow
           currencyOptions={["USD"]}
           selectedCurrency="USD"
           onChangeCurrency={() => {}}
@@ -116,7 +116,7 @@ setConversionRate(dataAgain.conversion_rates[selectedCurrencyTo]);
           amount={valueFromCurrency}
         />
         <div className="equals"> = </div>
-        <CurrencyRow
+  <CurrencyRow
           currencyOptions={allCurrencyList}
           selectedCurrency={selectedCurrencyTo}
           onChangeCurrency={(e) => setSelectedCurrencyTo(e.target.value)}
